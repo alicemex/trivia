@@ -82,16 +82,17 @@
 
 
     <form class="preguntas" id="questionsContent">
+        <h3 id="puntuacion"></h3>
         <h2 id="preguntaActual"></h2>
         <div class="col-12"> <button class="opciones" id="1" type="button" onclick="cualesmiID(this)">respuesta 1</button>
             <button class="opciones" id="2" type="button" onclick="cualesmiID(this)">respuesta 2</button></div>
         <div class="col-12"><button class="opciones" id="3" type="button" onclick="cualesmiID(this)">respuesta 3</button>
             <button class="opciones" id="4" type="button" onclick="cualesmiID(this)">respuesta 4</button></div>
         <!--RESPUESTA CORRECTA/INCORRECTO NO SE MUESTRAN HASTA DAR CLICK-->
-        <div id="correcto" class="correcto ocultar ">Respuesta anterior fue Correcta</div>
-        <div id="incorrecto" class="incorrecto ocultar ">Respuesta anterior fue incorrecta</div>
-        <div class="siguiente" onclick="siguiente()">siguiente</div>
-
+        <div id="correcto" class="correcto ocultar ">Respuesta Correcta</div>
+        <div id="incorrecto" class="incorrecto ocultar ">Respuesta incorrecta</div>
+        <div id="siguiente" class="siguiente" onclick="siguiente()">siguiente</div>
+        <div id="gameover" class="over ocultar">Game over</div>
     </form>
 </div>
 

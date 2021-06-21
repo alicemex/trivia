@@ -6,6 +6,8 @@ let category = document.getElementById("category");
 let difficulty = document.getElementById("difficulty");
 let type = document.getElementById("type");
 let start = document.getElementById("start");
+let gameover = document.getElementById("gameover");
+let next = document.getElementById("siguiente");
 
 
 let questions;
@@ -14,6 +16,9 @@ let wrongAnswers;
 
 var correct_index_answer;
 let currentQuestion;
+
+var rightAnwers = 0;
+
 
 
 
@@ -86,14 +91,23 @@ function cualesmiID(e) {
 
     if (correct_index_answer === ID) {
         correcto.classList.remove("ocultar");
+        rightAnwers++;
+
     } else {
         incorrecto.classList.remove("ocultar");
     }
+    document.getElementById("puntuacion").innerText = `tu puntuación es: ${rightAnwers}`;
 }
 
 let siguiente = () => {
-    qIndex++;
-    startGame();
-    correcto.classList.add("ocultar");
-    incorrecto.classList.add("ocultar");
+    if (qIndex + 1 < amount.value) {
+        qIndex++;
+        startGame();
+        correcto.classList.add("ocultar");
+        incorrecto.classList.add("ocultar");
+    } else {
+        console.log("ya no hay preguntas");
+        next.classList.add("ocultar");
+        gameover.classList.remove("ocultar");
+    }
 };

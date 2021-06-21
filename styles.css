@@ -101,8 +101,20 @@
         cursor: pointer;
         width: 80%;
         height: 3rem;
-        background: linear-gradient(180deg, rgb(87, 28, 248) 52%, rgb(38, 4, 160) 100%);
-        color: white;
+        background: linear-gradient(180deg, rgb(6, 233, 221) 52%, rgb(38, 4, 160) 100%);
+        color: black;
+        margin: 2rem auto;
+        border-radius: 10px;
+        text-align: center;
+        padding: 1rem 2.5rem;
+    }
+    
+    .over {
+        cursor: pointer;
+        width: 80%;
+        height: 3rem;
+        background-color: rgb(12, 231, 110);
+        color: black;
         margin: 2rem auto;
         border-radius: 10px;
         text-align: center;
