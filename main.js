@@ -6,7 +6,7 @@ let category = document.getElementById("category");
 let difficulty = document.getElementById("difficulty");
 let type = document.getElementById("type");
 let start = document.getElementById("start");
-
+let next = document.getElementById("next");
 
 let questions;
 let qIndex = 0;
@@ -14,7 +14,6 @@ let wrongAnswers;
 
 
 
-//funciones
 
 let getAPIData = e => { //recibe los datos de la url de la api cada vez que clickeo submit
     e.preventDefault();
@@ -70,13 +69,16 @@ const startGame = () => {
 };
 
 //funcion que oculta y muestra elementos
-let next = e => {
-
+let Next = () => {
+    next.addEventListener("click", siguiente);
 }
-
-//variable para controlar las preguntas una por una 
-//let currentQuestion = question[qIndex];
-//document.getElementById("questionName").innerText = currentQuestion.question;
+let siguiente = () => {
+        qIndex++;
+        startGame();
+    }
+    //variable para controlar las preguntas una por una 
+    //let currentQuestion = question[qIndex];
+    //document.getElementById("questionName").innerText = currentQuestion.question;
 
 
 //listeners

@@ -66,8 +66,7 @@
     .preguntas {
         display: none;
         /*no va a aparecer hasta que le demos click an start*/
-        width: 40%;
-        width: 40%;
+        width: 80%;
         padding: 5%;
         margin: 2rem;
         box-sizing: content-box;
@@ -96,17 +95,14 @@
     
     #next {
         cursor: pointer;
-        width: 3rem;
+        width: 80%;
         height: 3rem;
+        background: linear-gradient(180deg, rgb(87, 28, 248) 52%, rgb(38, 4, 160) 100%);
+        color: white;
         margin: 2rem auto;
-        float: center;
-        background-color: white;
-        border-radius: 50%;
-        align-items: center;
-        vertical-align: center;
-        display: flex;
+        border-radius: 10px;
         text-align: center;
-        padding: 3rem;
+        padding: 1rem 2.5rem;
     }
     
     #next:hover {
