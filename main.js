@@ -6,11 +6,14 @@ let category = document.getElementById("category");
 let difficulty = document.getElementById("difficulty");
 let type = document.getElementById("type");
 let start = document.getElementById("start");
-let next = document.getElementById("next");
+
 
 let questions;
 let qIndex = 0;
 let wrongAnswers;
+
+var correct_index_answer;
+let currentQuestion;
 
 
 
@@ -25,7 +28,6 @@ let getAPIData = e => { //recibe los datos de la url de la api cada vez que clic
             return response.json(); //lo convierte a json
         }).then(dataApi => {
             questions = (dataApi.results); //me trae el arreglo tipo objeto en json pero como una promesa
-            console.log(questions);
             startGame();
         })
 };
@@ -33,13 +35,12 @@ let getAPIData = e => { //recibe los datos de la url de la api cada vez que clic
 const startGame = () => {
     questionsContent.style.display = "flex";
     trivia.style.display = "none";
-
-    let currentQuestion = questions[qIndex];
+    currentQuestion = questions[qIndex];
     document.getElementById("preguntaActual").innerText = currentQuestion.question;
-
-    console.log(currentQuestion.question);
-    console.log(currentQuestion.correct_answer);
     console.log(currentQuestion.incorrect_answers);
+
+
+
     ///si son de true y false entra al if si no entra al else
     if (currentQuestion.incorrect_answers.length == 1) {
         document.getElementById(1).innerText = "true";
@@ -49,12 +50,13 @@ const startGame = () => {
         x.classList.add("ocultar");
         y.classList.add("ocultar");
     } else {
-        let correct_index_answer = Math.round(Math.random() * 4);
 
+        correct_index_answer = Math.round(Math.random() * 4); /*numero aleatorio del 1 al 4*/
+        /*en la siguiente linea vamos a traer el id que es igual al numero random ycolocarle la respuesta correcta ahi*/
         document.getElementById(correct_index_answer).innerText = currentQuestion.correct_answer;
         let j = 0;
         for (let i = 1; i <= 4; i++) {
-            if (i === correct_index_answer) continue
+            if (i === correct_index_answer) continue /*colocaos todos los demas respuestas */
             else {
                 let element = currentQuestion.incorrect_answers[j];
                 j++;
@@ -64,22 +66,34 @@ const startGame = () => {
         }
 
 
-    }
+
+    } /*fin else*/
 
 };
 
-//funcion que oculta y muestra elementos
-let Next = () => {
-    next.addEventListener("click", siguiente);
-}
-let siguiente = () => {
-        qIndex++;
-        startGame();
-    }
-    //variable para controlar las preguntas una por una 
-    //let currentQuestion = question[qIndex];
-    //document.getElementById("questionName").innerText = currentQuestion.question;
 
 
 //listeners
 formulario.addEventListener("submit", getAPIData);
+
+//funcion que escucha el id del click
+function cualesmiID(e) {
+
+    let id = e.id;
+    let ID = parseInt(id);
+    let correcto = document.getElementById("correcto");
+    let incorrecto = document.getElementById("incorrecto");
+
+    if (correct_index_answer === ID) {
+        correcto.classList.remove("ocultar");
+    } else {
+        incorrecto.classList.remove("ocultar");
+    }
+}
+
+let siguiente = () => {
+    qIndex++;
+    startGame();
+    correcto.classList.add("ocultar");
+    incorrecto.classList.add("ocultar");
+};

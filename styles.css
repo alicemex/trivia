@@ -93,7 +93,11 @@
         display: none;
     }
     
-    #next {
+    .mostrar {
+        display: block;
+    }
+    
+    .siguiente {
         cursor: pointer;
         width: 80%;
         height: 3rem;
@@ -109,4 +113,14 @@
         color: white;
         background: linear-gradient(180deg, rgba(248, 28, 28, 1) 52%, rgb(255, 106, 6) 100%);
         transition: ease 1s;
+    }
+    
+    .correcto {
+        background-color: rgb(12, 231, 110);
+        color: rgb(0, 0, 0);
+    }
+    
+    .incorrecto {
+        background-color: rgb(238, 29, 29);
+        color: white;
     }
