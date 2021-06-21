@@ -42,7 +42,7 @@ const startGame = () => {
     trivia.style.display = "none";
     currentQuestion = questions[qIndex];
     document.getElementById("preguntaActual").innerText = currentQuestion.question;
-    console.log(currentQuestion.incorrect_answers);
+    console.log("incorrect anwers:" + currentQuestion.incorrect_answers);
 
 
 
@@ -50,10 +50,14 @@ const startGame = () => {
     if (currentQuestion.incorrect_answers.length == 1) {
         document.getElementById(1).innerText = "true";
         document.getElementById(2).innerText = "False";
+
+        document.getElementById(1).value = "boolean";
+        document.getElementById(2).value = "boolean";
         let x = document.getElementById(3);
         let y = document.getElementById(4);
         x.classList.add("ocultar");
         y.classList.add("ocultar");
+
     } else {
 
         correct_index_answer = Math.round(Math.random() * 4); /*numero aleatorio del 1 al 4*/
@@ -81,33 +85,53 @@ const startGame = () => {
 //listeners
 formulario.addEventListener("submit", getAPIData);
 
+let correcto = document.getElementById("correcto");
+let incorrecto = document.getElementById("incorrecto");
+let respuesta;
 //funcion que escucha el id del click
 function cualesmiID(e) {
+    if (e.value == "boolean") {
 
-    let id = e.id;
-    let ID = parseInt(id);
-    let correcto = document.getElementById("correcto");
-    let incorrecto = document.getElementById("incorrecto");
+        let id = e.id;
+        let ID = parseInt(id);
+        console.log(ID); //2 false y el 1 =true
+        if (ID === 1) {
+            respuesta = True;
+        } else { respuesta = False; }
 
-    if (correct_index_answer === ID) {
-        correcto.classList.remove("ocultar");
-        rightAnwers++;
+        if (currentQuestion.incorrect_answers === respuesta) {
+            console.log("respuesta correcta");
+
+        } else console.log("respuesta incorrecta xxx");
+
 
     } else {
-        incorrecto.classList.remove("ocultar");
-    }
-    document.getElementById("puntuacion").innerText = `tu puntuación es: ${rightAnwers}`;
-}
+        let id = e.id;
+        let ID = parseInt(id);
 
-let siguiente = () => {
-    if (qIndex + 1 < amount.value) {
-        qIndex++;
-        startGame();
-        correcto.classList.add("ocultar");
-        incorrecto.classList.add("ocultar");
-    } else {
-        console.log("ya no hay preguntas");
-        next.classList.add("ocultar");
-        gameover.classList.remove("ocultar");
+
+        if (correct_index_answer === ID) {
+            correcto.classList.remove("ocultar");
+            rightAnwers++;
+
+        } else {
+            incorrecto.classList.remove("ocultar");
+        }
+        document.getElementById("puntuacion").innerText = `tu puntuación es: ${rightAnwers}`;
     }
+
+    let siguiente = () => {
+        if (qIndex + 1 < amount.value) {
+            qIndex++;
+            startGame();
+            correcto.classList.add("ocultar");
+            incorrecto.classList.add("ocultar");
+        } else {
+            console.log("ya no hay preguntas");
+            next.classList.add("ocultar");
+            correcto.classList.add("ocultar");
+            gameover.classList.remove("ocultar");
+        }
+    }
+
 };
