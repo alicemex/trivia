@@ -9,7 +9,7 @@ body {
 }
 
 .container-fluid {
-    height: 110vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,7 +26,7 @@ body {
     min-width: 80vw;
     border-radius: 15px;
     min-height: 80vh;
-    padding: 1%;
+    padding: 20% 10%;
     display: flex;
     flex-direction: column;
 }

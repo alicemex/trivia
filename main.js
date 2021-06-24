@@ -10,6 +10,7 @@ let gameover = document.getElementById("gameover");
 let next = document.getElementById("siguiente");
 
 
+
 let questions;
 let qIndex = 0;
 let wrongAnswers;
@@ -41,7 +42,7 @@ const startGame = () => {
     questionsContent.style.display = "flex";
     trivia.style.display = "none";
     currentQuestion = questions[qIndex];
-    document.getElementById("preguntaActual").innerText = currentQuestion.question;
+    document.getElementById("preguntaActual").innerHTML = currentQuestion.question;
     console.log("incorrect anwers:" + currentQuestion.incorrect_answers);
 
 
@@ -62,7 +63,7 @@ const startGame = () => {
 
         correct_index_answer = Math.round(Math.random() * 4); /*numero aleatorio del 1 al 4*/
         /*en la siguiente linea vamos a traer el id que es igual al numero random ycolocarle la respuesta correcta ahi*/
-        document.getElementById(correct_index_answer).innerText = currentQuestion.correct_answer;
+        document.getElementById(correct_index_answer).innerHTML = currentQuestion.correct_answer;
         let j = 0;
         for (let i = 1; i <= 4; i++) {
             if (i === correct_index_answer) continue /*colocaos todos los demas respuestas */
@@ -112,13 +113,18 @@ function cualesmiID(e) {
         let ID = parseInt(id);
         console.log(ID); //2 false y el 1 =true
         if (ID === 1) {
-            respuesta = True;
-        } else { respuesta = False; }
+            respuesta = true;
+        } else {
+            respuesta = "False";
+        }
 
-        if (currentQuestion.incorrect_answers === respuesta) {
-            console.log("respuesta correcta");
+        if (currentQuestion.incorrect_answers == respuesta) {
+            incorrecto.classList.remove("ocultar");
 
-        } else console.log("respuesta incorrecta xxx");
+        } else {
+            correcto.classList.remove("ocultar");
+        }
+
 
 
     } else {
