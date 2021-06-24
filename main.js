@@ -133,7 +133,7 @@ function cualesmiID(e) {
         } else {
             incorrecto.classList.remove("ocultar");
         }
-        document.getElementById("puntuacion").innerText = `tu puntuación es: ${rightAnwers}`;
+        document.getElementById("puntuacion").innerText = `tu puntuación: ${rightAnwers}`;
     }
 
 
