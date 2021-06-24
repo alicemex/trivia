@@ -89,6 +89,22 @@ let correcto = document.getElementById("correcto");
 let incorrecto = document.getElementById("incorrecto");
 let respuesta;
 //funcion que escucha el id del click
+
+function siguiente() {
+    console.log(amount.value);
+    if (qIndex + 1 < amount.value) {
+        qIndex++;
+        startGame();
+        correcto.classList.add("ocultar");
+        incorrecto.classList.add("ocultar");
+    } else {
+        console.log("ya no hay preguntas");
+        next.classList.add("ocultar");
+        correcto.classList.add("ocultar");
+        gameover.classList.remove("ocultar");
+    }
+}
+
 function cualesmiID(e) {
     if (e.value == "boolean") {
 
@@ -120,18 +136,6 @@ function cualesmiID(e) {
         document.getElementById("puntuacion").innerText = `tu puntuación es: ${rightAnwers}`;
     }
 
-    let siguiente = () => {
-        if (qIndex + 1 < amount.value) {
-            qIndex++;
-            startGame();
-            correcto.classList.add("ocultar");
-            incorrecto.classList.add("ocultar");
-        } else {
-            console.log("ya no hay preguntas");
-            next.classList.add("ocultar");
-            correcto.classList.add("ocultar");
-            gameover.classList.remove("ocultar");
-        }
-    }
+
 
 };
