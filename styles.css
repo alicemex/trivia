@@ -26,7 +26,7 @@ body {
     min-width: 80vw;
     border-radius: 15px;
     min-height: 80vh;
-    padding: 10%;
+    padding: 1%;
     display: flex;
     flex-direction: column;
 }
@@ -95,15 +95,14 @@ input {
 
 .siguiente {
     cursor: pointer;
-    width: 35%;
-    height: 15%;
+    width: 8rem;
+    height: 8rem;
     font-size: x-large;
     background: rgb(218, 0, 55);
     background: linear-gradient(0deg, rgba(218, 0, 55, 1) 20%, rgba(57, 16, 16, 1) 100%);
     color: white;
-    bottom: 4rem;
-    left: 32.5%;
-    position: absolute;
+    margin: auto;
+    position: relative;
     border-radius: 50%;
     justify-content: center;
     text-align: center;
